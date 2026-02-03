@@ -7,18 +7,25 @@ Route::get('/hello', function () {
 });
 
 
+
 use App\Http\Controllers\PageController;
 
 Route::get('/home', [PageController::class, 'home'])
     ->name('home');
-    
+
 Route::get('/about', [PageController::class, 'about'])
     ->name('about');
-    
+
+Route::get('/contact', [PageController::class, 'contact'])
+    ->name('contact');
+
 
 
 
 use App\Http\Controllers\ProductController;
 
-Route::get('/products/{id}', [ProductController::class, 'show'])
-    ->name('products.show');
+Route::get('/product/{id}', [ProductController::class, 'show'])
+    ->name('show');
+
+Route::get('/products/index', [ProductController::class, 'index'])
+    ->name('products.index');
