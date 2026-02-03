@@ -22,5 +22,13 @@ Avec index
     <p>{{ $index + 1 }}. {{ $product['name'] }}</p>
 @endforeach
 
+<br>
+Cas vide
+@forelse($products as $product)
+    <p>{{ $product['name'] }}</p>
+@empty
+    <p>Aucun produit trouvé.</p>
+@endforelse
+
 </body>
 </html>
