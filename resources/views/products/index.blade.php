@@ -8,9 +8,6 @@
 <body>
     
 
-<h1>{{ $products['id']}} </hi>
-<p>{{$products['name'] }} </p>
-<p>Prix {{ $products['price'] }} € </p>
 
 <ul>
     @foreach($products as $product)
@@ -18,7 +15,9 @@
     @endforeach
 </ul>
 
-<!-- Avec index -->
+<br>
+
+Avec index 
 @foreach($products as $index => $product)
     <p>{{ $index + 1 }}. {{ $product['name'] }}</p>
 @endforeach
