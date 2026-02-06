@@ -29,3 +29,6 @@ Route::get('/product/{id}', [ProductController::class, 'show'])
 
 Route::get('/products/index', [ProductController::class, 'index'])
     ->name('products.index');
+
+use App\Http\Controllers\Product_Controller;
+Route::resource('products', Product_Controller::class);
