@@ -11,13 +11,13 @@ class Product extends Model
 
 // Colonnes autorisées pour l'assignation de masse
     protected $fillable = [
+        'category_id',
         'name',
         'slug',
         'description',
         'price',
         'stock',
         'active',
-        'category_id',
         'image',
     ];
 

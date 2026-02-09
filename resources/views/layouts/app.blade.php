@@ -17,8 +17,24 @@
     </header>
 
     <main class="container mx-auto py-8">
-         @yield('content') 
+
+        @if(session('success'))
+            <div style="padding: 15px; margin: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 5px;">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div style="padding: 15px; margin: 10px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;">
+                {{ session('error') }}
+            </div>
+        @endif
+
+         @yield('content')
+
     </main>
+
+
 
     <footer class="bg-gray-800 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
