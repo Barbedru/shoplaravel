@@ -44,7 +44,8 @@ class ProductController extends Controller
             'stock' => $request->stock,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')
+            ->with('success', 'Produit créé avec succès ! ');
 
     }
 
@@ -69,6 +70,14 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        // Récupére le produit à éditer
+        $product = \App\Models\Product::find($id);
+
+        // Récupére les catégories
+        $categories = \App\Models\Category::all();
+
+        // Passe les variables à la vue
+        return view('products.edit', compact('product', 'categories'));
 
     }
 
@@ -77,7 +86,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validation des données
+        $validated = $request->validate([
+
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'nullable|integer|min:0',
+
+        ]);
+
+        $validated['active'] = $request->boolean('active');
+
+        $product = \App\Models\Product::find($id);
+        $product->update($validated);
+
+
+        return redirect()->route('products.index')
+            ->with('success', 'Produit mis à jour !');
     }
 
     /**
@@ -85,6 +112,11 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success', 'Produit supprimé !');
+
     }
 }
