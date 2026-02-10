@@ -24,10 +24,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $products = \App\Models\Product::all();
 
-        return view('products.create');
+        $categories = \App\Models\Category::all();
 
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -38,12 +38,13 @@ class ProductController extends Controller
         $product = Product::create([
             'category_id' => $request->category_id,
             'name' => $request->name,
+            'slug' => $request->slug,
             'description' => $request->description,
             'price' => $request->price,
-            'stock' => $request->quantity,
+            'stock' => $request->stock,
         ]);
 
-        return redirect()->route('products');
+        return redirect()->route('products.index');
 
     }
 
@@ -68,7 +69,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
