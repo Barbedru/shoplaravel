@@ -7,12 +7,17 @@
 </head>
 <body>
 
+@extends('layouts.app')
+
+
+@section('content')
+
 <h1>{{ $product->name}} </h1>
 <p> Stock : {{$product->stock }} </p>
 <p>{{ $product->price}} €</p>
 <p>{{ $product->etat}} </p>
 
-
+@endsection
 
 </body>
 </html>

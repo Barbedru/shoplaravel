@@ -5,7 +5,7 @@
     <h1 class="text-2xl font-bold mb-6">Modifier le produit</h1>
 
 
-<form action="{{ route('products.update', $product) }}" method="POST">
+<form action="{{ route('products.update', $product->id) }}" method="POST">
     @csrf
     @method('PUT')
 
@@ -14,53 +14,69 @@
 
         <label for="name" class="block font-medium mb-1">Nom</label>
         <input type="text" name="name" id="name"
-               value="{{ old('name') }}"
+               value="{{ old('name', $product->name) }}"
                class="w-full border rounded px-3 py-2"
                required>
         <label for="slug" class="block font-medium mb-1">Slug</label>
         <input type="text" name="slug" id="slug"
-               value="{{ old('slug') }}"
+               value="{{ old('slug', $product->slug) }}"
                class="w-full border rounded px-3 py-2"
                required>
         <label for="description" class="block font-medium mb-1">Description</label>
         <input type="text" name="description" id="description"
-               value="{{ old('description') }}"
+               value="{{ old('description', $product->description) }}"
                class="w-full border rounded px-3 py-2"
                required>
         <label for="price" class="block font-medium mb-1">Prix</label>
         <input type="text" name="price" id="price"
-               value="{{ old('Prix') }}"
+               value="{{ old('price', $product->price) }}"
                class="w-full border rounded px-3 py-2"
                required>
         <label for="stock" class="block font-medium mb-1">Stock</label>
         <input type="text" name="stock" id="stock"
-               value="{{ old('Stock') }}"
+               value="{{ old('stock' , $product->stock) }}"
                class="w-full border rounded px-3 py-2"
                required>
         <label for="active" class="block font-medium mb-1">Active</label>
         <input type="checkbox" name="active" id="active"
-               value="{{ old('Status') }}"
+               value="{{ old('status' , $product->status) }}"
                class="w-full border rounded px-3 py-2"
                required>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+
+
+
+
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
             Mettre à jour
         </button>
 
-        <form action="{{ route('products.destroy', $product) }}" method="POST"
-              onsubmit="return confirm('Êtes-vous sûr ?')">
-            @csrf
-            @method('DELETE')
-
-            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
-                Supprimer
-            </button>
-        </form>
 
     </div>
 
 
 
 </form>
+
+
+
+
+    <div>
+          <form action="{{ route('products.destroy', $product->id) }}" method="POST"
+            onsubmit="return confirm('Êtes-vous sûr ?')">
+
+                @csrf
+                @method('DELETE')
+
+                 <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">
+                     Supprimer
+                 </button>
+          </form>
+
+    </div>
+
+
+
+
 @endsection
 

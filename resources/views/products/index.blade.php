@@ -15,7 +15,7 @@
 @section('content')
 
 <h1 class="text-3xl font-bold mb-4">Nos produits</h1>
-<p>Découvrez nos produits exceptionnels !</p>
+<h2 class="text-2xl font-bold mb-4" >Découvrez nos produits exceptionnels !</h2>
 
 <ul>
     @foreach($products as $product)
