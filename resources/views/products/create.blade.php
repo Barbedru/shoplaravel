@@ -40,6 +40,7 @@
                    value="{{ old('Stock') }}"
                    class="w-full border rounded px-3 py-2"
                    required>
+
             <label for="active" class="block font-medium mb-1">Active</label>
             <input type="checkbox" name="active" id="active"
                    value="{{ old('Status') }}"

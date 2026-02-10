@@ -19,7 +19,7 @@
 
 <ul>
     @foreach($products as $product)
-        <li>{{ $product->name}} - {{ $product->price}} €</li>
+        <li>{{ $product->category->name}} - {{$product->name}} - {{ $product->price}} €</li>
     @endforeach
 </ul>
 

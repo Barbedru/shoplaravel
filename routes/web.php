@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('/hello', function () {
     return 'Hello Laravel!';
 });
@@ -27,3 +28,5 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 
+use App\Http\Controllers\CategoryController;
+Route::get('/category/{id}', [CategoryController::class, 'show']);
