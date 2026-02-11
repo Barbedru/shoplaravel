@@ -28,12 +28,14 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 
+
 use App\Http\Controllers\CategoryController;
 
-Route::get('/category/{id}', [CategoryController::class, 'show']);
+// Liste des catégories
+Route::get('/category', [CategoryController::class, 'index'])
+    ->name('category.index');
 
-Route::get('/category/', [CategoryController::class, 'index'])
-    ->name('category');
-
+// Afficher une catégorie
 Route::get('/category/{category}', [CategoryController::class, 'show'])
     ->name('category.show');
+

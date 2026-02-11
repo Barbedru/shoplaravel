@@ -41,11 +41,16 @@
                    class="w-full border rounded px-3 py-2"
                    required>
 
-            <label for="active" class="block font-medium mb-1">Active</label>
-            <input type="checkbox" name="active" id="active"
-                   value="{{ old('Status') }}"
-                   class="w-full border rounded px-3 py-2"
-                   >
+            <label for="status" class="block font-medium mb-1">Status</label>
+
+            <select name="status" id="status" class="w-full border rounded px-3 py-2">
+                <option value="disponible" {{ old('status') == 'disponible' ? 'selected' : '' }}>
+                    Disponible
+                </option>
+                <option value="indisponible" {{ old('status') == 'indisponible' ? 'selected' : '' }}>
+                    Indisponible
+                </option>
+            </select>
 
         </div>
 

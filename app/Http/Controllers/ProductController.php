@@ -42,6 +42,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'stock' => $request->stock,
+            'active' => $request->has('active'),
         ]);
 
         return redirect()->route('products.index')
@@ -56,7 +57,7 @@ class ProductController extends Controller
     {
         $product = \App\Models\Product::find($id);
 
-        return view('show', [
+        return view('products.show', [
                 'product' => $product
             ]
         );
@@ -92,6 +93,7 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'stock' => 'nullable|integer|min:0',
+            'active' => 'nullable|boolean',
 
         ]);
 
