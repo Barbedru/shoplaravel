@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create([
+        Product::create([
             'category_id' => $request->category_id,
             'name' => $request->name,
             'slug' => $request->slug,
@@ -57,9 +57,7 @@ class ProductController extends Controller
         $product = \App\Models\Product::find($id);
 
         return view('show', [
-                'product' => $product,
-                'id' => $id
-
+                'product' => $product
             ]
         );
 

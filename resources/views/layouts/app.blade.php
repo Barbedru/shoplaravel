@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'ShopLaravel')</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
-</head>
+
+
 <body class="bg-gray-100">
     <header class="bg-green-600 text-white p-4">
         <nav class="container mx-auto">
             <a href="{{ route('home') }}" class="font-bold text-xl">ShopLaravel</a>
             <a href="{{ route('products.index') }}" class="ml-4">Produits</a>
+            <a href="{{route('category')}}" class="ml-4">Categories</a>
+
             <a href="{{ route('about') }}" class="ml-4">À propos</a>
             <a href="{{ route('contact') }}" class="ml-4">Contact</a>
         </nav>
@@ -41,5 +44,7 @@
             &copy; {{ date('Y') }} ShopLaravel - Tous droits réservés
         </div>
     </footer>
+
+
 </body>
 </html>

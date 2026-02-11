@@ -8,7 +8,7 @@
         @csrf
 
         <div>
-            <label for="category_id">Catégorie *</label>
+            <label for="category_id">Catégorie </label>
             <select name="category_id" id="category_id" required>
                 <option value="">-- Choisir une catégorie --</option>
                 @foreach($categories as $category)
@@ -45,7 +45,7 @@
             <input type="checkbox" name="active" id="active"
                    value="{{ old('Status') }}"
                    class="w-full border rounded px-3 py-2"
-                   required>
+                   >
 
         </div>
 

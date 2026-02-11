@@ -19,9 +19,12 @@
 
 <ul>
     @foreach($products as $product)
-        <li>{{ $product->category->name}} - {{$product->name}} - {{ $product->price}} €</li>
+        <li><a href="{{ route('category') }}">{{ $product->category->name}}</a> - {{$product->name}} - {{ $product->price}} €</li>
     @endforeach
 </ul>
+
+
+
 
 
 
