@@ -27,7 +27,9 @@ class ProductController extends Controller
 
         $categories = \App\Models\Category::all();
 
-        return view('products.create', compact('categories'));
+        return view('products.create', compact('categories'))
+            ->with('success', 'Produit créé !');
+
     }
 
     /**
@@ -35,18 +37,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'description' => $request->description,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'active' => $request->has('active'),
+        $validated = $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            //'active' => 'required|boolean',
         ]);
 
-        return redirect()->route('products.index')
-            ->with('success', 'Produit créé avec succès ! ');
+        Product::create($validated);
+
+        return redirect()->route('products.index');
 
     }
 

@@ -27,7 +27,7 @@
             </div>
         @endif
 
-        @if(session('error'))
+        @if(session('errors'))
             <div style="padding: 15px; margin: 10px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px;">
                 {{ session('error') }}
             </div>
