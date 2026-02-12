@@ -43,10 +43,13 @@ use App\Http\Controllers\CartController;
 
 Route::get('/cart', [CartController::class, 'show'])
     ->name('cart.show');
-Route::post('/cart', [CartController::class, 'add'])
+
+Route::post('/cart/add/{id}', [CartController::class, 'add'])
     ->name('cart.add');
+
 Route::patch('/cart', [CartController::class, 'update'])
     ->name('cart.update');
-Route::delete('/cart', [CartController::class, 'delete'])
+
+Route::delete('/cart', [CartController::class, 'remove'])
     ->name('cart.delete');
 

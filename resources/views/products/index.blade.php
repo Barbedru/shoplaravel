@@ -43,6 +43,17 @@
                             Voir
                         </a>
 
+
+                        <form action="{{ route('cart.add', $product) }}" method="POST" >
+                            @csrf
+                            @method('POST')
+                            <button type="submit"
+                                    class="w-full bg-purple-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg text-sm transition">
+                                Ajouter au panier
+                            </button>
+                        </form>
+
+
                         <a href="{{ route('products.edit', $product) }}"
                            class="flex-1 text-center bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-2 rounded-lg text-sm transition">
                             Editer
