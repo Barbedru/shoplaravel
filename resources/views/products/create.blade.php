@@ -69,7 +69,7 @@
             <div>
                 <label for="price" class="block font-medium mb-1">Prix</label>
                 <input type="text" name="price" id="price"
-                       value="{{ old('Prix') }}"
+                       value="{{ old('price') }}"
                        class="mt-1 block w-full rounded-md border-gray-300
                   @error('price') border-red-500 @enderror">
 
@@ -81,7 +81,7 @@
             <div>
                 <label for="stock" class="block font-medium mb-1">Stock</label>
                 <input type="text" name="stock" id="stock"
-                       value="{{ old('Stock') }}"
+                       value="{{ old('stock') }}"
                        class="mt-1 block w-full rounded-md border-gray-300
                   @error('stock') border-red-500 @enderror">
 
@@ -93,11 +93,11 @@
 
                 <label for="status" class="block font-medium mb-1">Status</label>
 
-                <select name="status" id="status" class="w-full border rounded px-3 py-2">
-                    <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                <select name="active" id="active" class="w-full border rounded px-3 py-2">
+                    <option value="1" {{ old('active') == 1 ? 'selected' : '' }}>
                         Disponible
                     </option>
-                    <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
+                    <option value="0" {{ old('active') == 0 ? 'selected' : '' }}>
                         Indisponible
                     </option>
                 </select>
