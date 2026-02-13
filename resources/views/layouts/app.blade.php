@@ -13,7 +13,7 @@
             <a href="{{ route('home') }}" class="font-bold text-xl">ShopLaravel</a>
             <a href="{{ route('products.index') }}" class="ml-4">Produits</a>
             <a href="{{route('category.index')}}" class="ml-4">Categories</a>
-            <a href="{{route('cart.show')}}" class="ml-4">Panier</a>
+            <a href="{{route('cart.show')}}" class="ml-4">Panier </a>
             <a href="{{ route('about') }}" class="ml-4">À propos</a>
             <a href="{{ route('contact') }}" class="ml-4">Contact</a>
         </nav>

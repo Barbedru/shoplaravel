@@ -14,6 +14,9 @@ class ProductController extends Controller
     {
         $products = \App\Models\Product::with('category')->get();
 
+//        dd($products);
+
+
         return view('products.index', [
             'products' => $products
         ]);

@@ -39,17 +39,21 @@ Route::get('/category', [CategoryController::class, 'index'])
 Route::get('/category/{category}', [CategoryController::class, 'show'])
     ->name('category.show');
 
+
 use App\Http\Controllers\CartController;
 
 Route::get('/cart', [CartController::class, 'show'])
     ->name('cart.show');
 
-Route::post('/cart/add/{id}', [CartController::class, 'add'])
-    ->name('cart.add');
+Route::post('/cart/{product}', [CartController::class, 'add'])->name('cart.add');
 
-Route::patch('/cart', [CartController::class, 'update'])
+Route::patch('/cart/{product}', [CartController::class, 'update'])
     ->name('cart.update');
 
-Route::delete('/cart', [CartController::class, 'remove'])
-    ->name('cart.delete');
+Route::delete('/cart/{product}', [CartController::class, 'remove'])
+    ->name('cart.remove');
+
+Route::delete('/cart', [CartController::class, 'destroy'])
+    ->name('cart.destroy');
+
 

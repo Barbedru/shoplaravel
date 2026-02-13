@@ -22,6 +22,7 @@
             <div class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
 
 
+
                 <div class="p-5">
                     <p class="text-sm text-gray-500 mb-1">
                         <a href="{{ route('category.index') }}" class="hover:underline">
@@ -44,9 +45,8 @@
                         </a>
 
 
-                        <form action="{{ route('cart.add', $product) }}" method="POST" >
+                        <form action="{{ route('cart.add',$product) }}" method="POST" >
                             @csrf
-                            @method('POST')
                             <button type="submit"
                                     class="w-full bg-purple-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg text-sm transition">
                                 Ajouter au panier

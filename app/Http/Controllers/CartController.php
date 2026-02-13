@@ -21,11 +21,18 @@ class CartController extends Controller
     {
         $cart = session('cart', []);
 
+        $productId = $product->id;
+//        dd($product);
+
         //Ajoute +1 produit si déjà existant sinon ajoute dans le panier
-        if (isset($cart[$product->id])){
-            $cart[$product->id]++;
+        if (isset($cart[$productId])){
+            $cart[$productId]['quantity']++;
         }else {
-            $cart[$product->id] = 1;
+            $cart[$productId] = [
+                'name' => $product->name,
+                'price' => (float) $product->price,
+                'quantity' => 1,
+            ];
         }
 
         //Sauvegarde le panier en session
@@ -36,21 +43,49 @@ class CartController extends Controller
 
     }
 
+
     public function update(Request $request, Product $product)
     {
+        $data = $request->validate([
+            'quantity' => ['required', 'integer', 'min:0'],
+        ]);
 
+        $cart = $request->session()->get('cart', []);
+
+        $quantity = (int) $data['quantity'];
+
+        if ($quantity <= 0) {
+            unset($cart[$product->id]);
+        } else {
+            $cart[$product->id]['quantity'] = $quantity;
+        }
+
+        $request->session()->put('cart', $cart);
+
+        return back()->with('success', 'Panier mise a jour.');
     }
 
-    public function remove(Request $request, Product $product)
+
+    public function remove(Product $product)
+
     {
-        session()->forget('cart');
+        $cart = session('cart', []);
+
+        // Supprimer l'article du panier
+        unset($cart[$product->id]);
+
+        session(['cart' => $cart]);
+
+        return back()->with('success', 'Article supprimé du panier.');
+
 
     }
-
-    public function destroy(string $id)
+    public function destroy(Request $request)
 
     {
         session()->flush();
+
+        return redirect()->route('cart.show');
 
     }
 }

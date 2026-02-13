@@ -37,7 +37,15 @@
                 <p class="mb-6 text-red-600 font-semibold">
                     ✖ Rupture de stock
                 </p>
-    @endif
+
+            @endif
+                <form action="{{ route('cart.add',$product) }}" method="POST" >
+                    @csrf
+                    <button type="submit"
+                            class="w-full bg-purple-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg text-sm transition">
+                        Ajouter au panier
+                    </button>
+                </form>
 
         </div>
 
